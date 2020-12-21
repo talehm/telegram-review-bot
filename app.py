@@ -1,27 +1,55 @@
 import os
 
 from flask import Flask, request
-
-import telebot
-
-TOKEN = '1334466133:AAETisdO6JU7nf-SKc3G5n3X2H-L8ClW1Uo'
-bot = telebot.TeleBot(TOKEN)
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, Update
+from telebot_creds.credentials import bot, TOKEN
+from callbacks import CallbackQueries
 app = Flask(__name__)
+#callbacks = CallbackQueries(bot)
+# Includes all callback queries
+CallbackQueries()
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.reply_to(message, 'Hello, ' + message.from_user.first_name)
+    bot_welcome = """
+        Welcome to coolAvatar bot, the bot is an agent which gives items free for review.
+        """
+        # send the welcoming message
+    bot.reply_to(message, text=bot_welcome)
+    bot.send_message(message.chat.id,"Please choose:", reply_markup=start_markup())
+    
 
 
-@bot.message_handler(func=lambda message: True, content_types=['text'])
+def start_markup():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 1
+
+    markup.add(InlineKeyboardButton("\U0001F4EB Order Product", callback_data='order_product'),
+            InlineKeyboardButton("\U0001F31F Review Product", callback_data='review_product'),
+            InlineKeyboardButton("\U0001F50D Check Order Status", callback_data='check_order_status'),
+            InlineKeyboardButton("\U0001F44E Complaints", callback_data='complaints'),
+            InlineKeyboardButton("\U0001F30F Choose Language", callback_data='choose_language'),
+            InlineKeyboardButton("\U000026D4 Cancel the Order", callback_data='cancel_order'),
+            InlineKeyboardButton("\U000026A0 Rules", callback_data='rules'),
+            InlineKeyboardButton("\U0001F4E3 Help", callback_data='help'))
+    return markup
+
+""" @bot.message_handler(func=lambda message: True, content_types=['text'])
 def echo_message(message):
-    bot.reply_to(message, message.text)
+    print(message)
+    bot.reply_to(message, message.text) """
+
+
+#b.callback_order_product()
+#bot.send_message(query.message.chat.id, " Please enter the Product ID! ")
+
+
 
 
 @app.route('/' + TOKEN, methods=['POST'])
 def getMessage():
-    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    bot.process_new_updates([Update.de_json(request.stream.read().decode("utf-8"))])
     return "!", 200
 
 
