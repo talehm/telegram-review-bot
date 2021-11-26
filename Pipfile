@@ -71,6 +71,7 @@ Jinja2 = "==3.0.3"
 MarkupSafe = "==2.0.1"
 Pygments = "==2.9.0"
 Werkzeug = "==2.0.2"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 
