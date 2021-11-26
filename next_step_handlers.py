@@ -6,7 +6,6 @@ class NextStepHandlers:
         try:
             chat_id = message.chat.id
             id = message.text
-            print(age)
             if not id.isdigit():
                 msg = bot.reply_to(message, 'Please enter a number. Try again please')
                 bot.register_next_step_handler(msg, NextStepHandlers.check_order_id)
