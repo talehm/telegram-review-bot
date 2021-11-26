@@ -15,4 +15,4 @@ class NextStepHandlers:
                 msg = bot.reply_to(message, 'Thank you')
             #bot.register_next_step_handler(msg, process_sex_step)
         except Exception as e:
-            bot.reply_to(message, 'oooops') 
+            bot.reply_to(message, str(e)) 
