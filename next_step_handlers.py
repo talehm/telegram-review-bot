@@ -13,7 +13,7 @@ class NextStepHandlers:
                 return
             else:
                 product = db.session.query(Product).filter(Product.id==id)[0]
-                print(product)
+                print(type(product))
                 msg = bot.reply_to(message, product)
 
                 msg = bot.reply_to(message, product.name)
