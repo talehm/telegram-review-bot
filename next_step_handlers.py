@@ -1,6 +1,7 @@
 from telebot_creds.credentials import bot
 # from db import conn 
-# from config import db
+from models.Product import Product
+from config import db
 class NextStepHandlers:
     def check_order_id(message):
         try:
@@ -11,7 +12,8 @@ class NextStepHandlers:
                 bot.register_next_step_handler(msg, NextStepHandlers.check_order_id)
                 return
             else:
-                msg = bot.reply_to(message, 'Thank you')
+                product = db.session.query(Product).filter(Product.id==1)[0]
+                msg = bot.reply_to(message, product.name)
             #bot.register_next_step_handler(msg, process_sex_step)
         except Exception as e:
             bot.reply_to(message, str(e)) 
