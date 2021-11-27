@@ -16,7 +16,7 @@ class CallbackQueries:
    
     @bot.callback_query_handler(lambda query: query.data == "order_chosen_product")
     def callback_order_chosen_product(query):
-        bot.send_message(query.message.chat.id, NextStepHanlders.verify_order_with_agent)
+        bot.send_message(query.message.chat.id, NextStepHandlers.verify_order_with_agent)
 
     @bot.callback_query_handler(lambda query: query.data == "check_order_status")
     def callback_check_order_status(query):

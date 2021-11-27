@@ -18,7 +18,7 @@ class NextStepHandlers:
                 # msg = bot.reply_to(message, type(product))
                 msg = bot.send_photo(chat_id, photo='https://www.thewechatagency.com/wp-content/uploads/2017/11/chat_bot-01-660x495.jpg', caption=product.name, reply_to_message_id=message_id)
                 # msg = bot.reply_to(message,  reply_markup=self.order_chosen_product_markup())
-                msg = bot.send_message(chat_id,"Please choose:", reply_markup=self.order_chosen_product_markup())
+                msg = bot.send_message(chat_id, "Please choose:", reply_markup=order_chosen_product_markup())
 
                 # msg = bot.reply_to(message, product.name)
             #bot.register_next_step_handler(msg, process_sex_step)
@@ -33,14 +33,14 @@ class NextStepHandlers:
             chat_id=message.chat.id
             msg = bot.reply_to(message, "Please send your paypal email and amazon profile link. Please fuck off if you do not have Ayten")
         except Exception as e:
+            print(str(e))
             bot.reply_to(message, str(e)) 
 
 
 
-    def order_chosen_product_markup():
-        markup = InlineKeyboardMarkup()
-        markup.row_width = 1
+def order_chosen_product_markup():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 1
 
-        markup.add(InlineKeyboardButton("\U0001F4EB Order This Product", callback_data='order_chosen_product'),
-                InlineKeyboardButton("\U0001F31F Return Home", callback_data='return_home'))
-        return markup 
+    markup.add(InlineKeyboardButton("\U0001F4EB Order This Product", callback_data='order_chosen_product'))
+    return markup 
