@@ -22,12 +22,12 @@ class NextStepHandlers:
             msg = bot.reply_to(message, "Product ID not found!")
         except Exception as e:
             bot.reply_to(message, str(e)) 
-            
+
     def verify_order_with_agent():
         try:
             message_id=message.message_id
             chat_id=message.chat.id
-            msg = bot.reply_to(message, "Please send your paypal email and amazon profile link")
+            msg = bot.reply_to(message, "Please send your paypal email and amazon profile link. Please fuck off if you do not have Ayten")
         except:
 
 
