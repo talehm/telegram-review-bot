@@ -2,6 +2,7 @@ from app import app
 from flask import request
 from callbacks import CallbackQueries
 from telebot_creds.credentials import bot, TOKEN
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, Update
 
 CallbackQueries()
 
