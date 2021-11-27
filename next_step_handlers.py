@@ -1,11 +1,9 @@
 from telebot_creds.credentials import bot
 # from db import conn 
-from callbacks import CallbackQueries
 
 from app.models import Product
 from app import db
 
-CallbackQueries()
 
 class NextStepHandlers:
     def check_order_id(self, message):
@@ -41,6 +39,9 @@ class NextStepHandlers:
             print(str(e))
             bot.reply_to(message, str(e)) 
 
+@bot.callback_query_handler(lambda query: query.data == "order_chosen_product")
+def callback_order_chosen_product(query):
+    bot.send_message(query.message.chat.id, NextStepHandlers.verify_order_with_agent)
 
 
 def order_chosen_product_markup():

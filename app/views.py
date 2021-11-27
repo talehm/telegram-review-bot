@@ -15,6 +15,15 @@ def start(message):
     bot.reply_to(message, text=bot_welcome)
     bot.send_message(message.chat.id,"Please choose:", reply_markup=start_markup())
 
+@bot.message_handler(commands=['order_chosen_product'])
+def start(message):
+    bot_welcome = """
+        Welcome to coolAvatar bot, the bot is an agent which gives items free for review.
+        """
+        # send the welcoming message
+    bot.reply_to(message, text=bot_welcome)
+    bot.send_message(message.chat.id,"Please choose:", reply_markup=start_markup())
+
 
 def start_markup():
     markup = InlineKeyboardMarkup()
