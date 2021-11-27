@@ -5,6 +5,7 @@ from app import db
 class NextStepHandlers:
     def check_order_id(message):
         try:
+            message_id = message.message_id
             chat_id = message.chat.id
             id = message.text
             if not id.isdigit():
@@ -15,7 +16,7 @@ class NextStepHandlers:
                 product = db.session.query(Product).filter(Product.id==id)[0]
                 
                 # msg = bot.reply_to(message, type(product))
-                msg = bot.send_photo(chat_id, photo='https://www.thewechatagency.com/wp-content/uploads/2017/11/chat_bot-01-660x495.jpg', caption=product.name)
+                msg = bot.send_photo(chat_id, photo='https://www.thewechatagency.com/wp-content/uploads/2017/11/chat_bot-01-660x495.jpg', caption=product.name, reply_to_message_id=)
                 # msg = bot.reply_to(message, product.name)
             #bot.register_next_step_handler(msg, process_sex_step)
         except IndexError as e:
