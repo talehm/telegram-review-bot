@@ -1,7 +1,7 @@
 from telebot_creds.credentials import bot
 # from db import conn 
-from app.models import Product
-from app import db
+from models.Product import Product
+from config import db
 class NextStepHandlers:
     def check_order_id(message):
         try:

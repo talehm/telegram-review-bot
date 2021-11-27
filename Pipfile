@@ -66,12 +66,14 @@ xlwt = "==1.3.0"
 zabbix-api = "==0.5.4"
 Deprecated = "==1.2.12"
 Django = "==2.2.24"
-Flask = "==2.0.2"
 Jinja2 = "==3.0.3"
 MarkupSafe = "==2.0.1"
 Pygments = "==2.9.0"
 Werkzeug = "==2.0.2"
 flask-sqlalchemy = "*"
+flask-migrate = "*"
+flask-script = "*"
+flask = "==1.1.2"
 
 [dev-packages]
 
