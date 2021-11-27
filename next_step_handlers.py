@@ -1,7 +1,12 @@
 from telebot_creds.credentials import bot
 # from db import conn 
+from callbacks import CallbackQueries
+
 from app.models import Product
 from app import db
+
+CallbackQueries()
+
 class NextStepHandlers:
     def check_order_id(self, message):
         try:
