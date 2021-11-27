@@ -28,7 +28,9 @@ class NextStepHandlers:
             message_id=message.message_id
             chat_id=message.chat.id
             msg = bot.reply_to(message, "Please send your paypal email and amazon profile link. Please fuck off if you do not have Ayten")
-        except:
+        except Exception as e:
+            bot.reply_to(message, str(e)) 
+
 
 
     def order_chosen_product_markup():
