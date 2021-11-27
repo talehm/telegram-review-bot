@@ -1,6 +1,5 @@
 from app import app
-from flask import render_template, request
-from app.forms import ContactForm
+from flask import request
 from callbacks import CallbackQueries
 from telebot_creds.credentials import bot, TOKEN
 
