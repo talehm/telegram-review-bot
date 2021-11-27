@@ -38,5 +38,5 @@ class NextStepHandlers:
         markup.row_width = 1
 
         markup.add(InlineKeyboardButton("\U0001F4EB Order This Product", callback_data='order_chosen_product'),
-                InlineKeyboardButton("\U0001F31F Return Home", callback_data='return_home'),
+                InlineKeyboardButton("\U0001F31F Return Home", callback_data='return_home'))
         return markup 
