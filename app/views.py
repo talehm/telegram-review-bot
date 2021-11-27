@@ -60,7 +60,7 @@ def getMessage():
 @app.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://telegram-review-bot.herokuapp.com/' + TOKEN)
+    bot.set_webhook(url='https://b751-5-197-201-227.ngrok.io/' + TOKEN)
     return "!", 200
 
 
