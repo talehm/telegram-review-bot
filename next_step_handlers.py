@@ -8,6 +8,7 @@ class NextStepHandlers:
             message_id = message.message_id
             chat_id = message.chat.id
             id = message.text
+            print(id)
             if not id.isdigit():
                 msg = bot.reply_to(message, 'Please enter a number. Try again please')
                 bot.register_next_step_handler(msg, NextStepHandlers.check_order_id)
@@ -15,7 +16,10 @@ class NextStepHandlers:
             else:
                 product = db.session.query(Product).filter(Product.id==id)[0]
                 # msg = bot.reply_to(message, type(product))
-                msg = bot.send_photo(chat_id, photo='https://www.thewechatagency.com/wp-content/uploads/2017/11/chat_bot-01-660x495.jpg', caption=product.name, reply_to_message_id=message_id, reply_markup=self.order_chosen_product_markup())
+                msg = bot.send_photo(chat_id, photo='https://www.thewechatagency.com/wp-content/uploads/2017/11/chat_bot-01-660x495.jpg', caption=product.name, reply_to_message_id=message_id)
+                # msg = bot.reply_to(message,  reply_markup=self.order_chosen_product_markup())
+                msg = bot.send_message(chat_id,"Please choose:", reply_markup=self.order_chosen_product_markup()())
+
                 # msg = bot.reply_to(message, product.name)
             #bot.register_next_step_handler(msg, process_sex_step)
         except IndexError as e:
