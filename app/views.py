@@ -2,8 +2,10 @@ from app import app
 from flask import render_template, request
 from app.forms import ContactForm
 from callbacks import CallbackQueries
+from telebot_creds.credentials import bot, TOKEN
 
 CallbackQueries()
+
 @bot.message_handler(commands=['start'])
 def start(message):
     bot_welcome = """
@@ -12,7 +14,6 @@ def start(message):
         # send the welcoming message
     bot.reply_to(message, text=bot_welcome)
     bot.send_message(message.chat.id,"Please choose:", reply_markup=start_markup())
-    
 
 
 def start_markup():
