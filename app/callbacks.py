@@ -13,6 +13,10 @@ class CallbackQueries:
     @bot.callback_query_handler(lambda query: query.data == "review_product")
     def callback_review_product(query):
         bot.send_message(query.message.chat.id, " Choose order to submit review! ")
+   
+    @bot.callback_query_handler(lambda query: query.data == "order_chosen_product")
+    def callback_review_product(query):
+        bot.send_message(query.message.chat.id, NextStepHanlders.verify_order_with_agent)
 
     @bot.callback_query_handler(lambda query: query.data == "check_order_status")
     def callback_check_order_status(query):
